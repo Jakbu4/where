@@ -1,0 +1,173 @@
+:root {
+    --green: rgb(7, 139, 139);
+}
+#bg{
+    background-image: url('../assets/1.jpg');
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    filter: grayscale(100%);
+}
+#register_field{
+    height: 100vh;
+    width: 100%;
+}
+#form_container{
+    width: 1200px;
+    height: 700px;
+    margin: 0;
+    position: absolute;           
+    top: 50%; 
+    left: 50%;                     
+    transform: translate(-50%, -50%);
+}
+.register_info{
+    width: 50%;
+    height: 100%;
+    position: relative;
+    float: left;
+    background-color: var(--green);
+}
+.register_info h1{
+    text-align: center;
+    color: white;
+    font-family: 'Courier new';
+    font-size: 300%;
+    margin-top: 50px;
+    margin-bottom: 30px;
+}
+.register_info p{
+    max-width: 500px;
+    margin-left: 50px;
+    font-size: 110%;
+    font-family: 'Lato';
+    line-height: 25px;
+}
+.have_account_button, #register_submit_button{
+    background-color: var(--green); /* Green */
+    border: 3px solid rgba(66, 68, 90, 0.5);
+    font-family: 'Lato';
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 50px;
+    margin-top: 30px;
+    cursor: pointer;
+
+}
+.have_account_button:hover{
+    background-color: white; /* Green */
+    border: 3px solid white;
+    color: var(--green);
+    transition-duration: 300ms;
+}
+.register_form{
+    width: 50%;
+    height: 100%;
+    position: relative;
+    float: left;
+    background-color: white;
+    font-family: 'Lato';
+}
+.register_form h2{
+    font-family: 'Courier new';
+    font-size: 220%;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+#form_input{
+    border: none;
+    border-bottom: 1px solid rgb(143, 143, 143);
+    font-size: 110%;
+    width: 60%;
+    line-height: 40px;
+    padding-left: 15px;
+    outline: none;
+    margin-bottom: 17px;
+}
+#form_input::placeholder{
+    opacity: 0.7;
+}
+#register_checkbox{
+    margin-top: 20px;
+    margin-left: 110px;
+}
+#register_submit_button{
+    border: none;
+    padding: 10px 15px;
+    margin-left: 110px;
+}
+#register_submit_button:hover{
+    padding: 7px 12px;
+    border: 3px solid var(--green);
+    color: var(--green);
+    background-color: white;
+    transition-duration: 150ms;
+}
+
+
+@media screen and (max-width: 1200px) {
+    #form_container{
+        width: 600px;  
+    }
+    .register_info{
+        visibility: hidden;
+        display: none;
+        width: 0%;
+        position: absolute;
+    }
+    .register_form{
+        width: 100%;
+    }
+}
+@media screen and (max-width: 700px) {
+    #form_container{
+        zoom: 0.9;
+    }
+}
+@media screen and (max-width: 600px) {
+    #form_container{
+        zoom: 0.8;
+        font-size: 130%;
+    }
+    #form_input{
+        margin-bottom: 25px;
+    }
+    #register_checkbox{
+        width: 20px;
+        height: 20px;
+        margin-bottom: 25px;
+    }
+    #register_submit_button{
+        padding: 13px 18px;
+        font-size: 120%;
+    }
+}
+@media screen and (max-width: 500px) {
+    #form_container{
+        zoom: 0.7;
+    }
+}
+@media screen and (max-width: 500px) {
+    #form_container{
+        zoom: 0.6;
+    }
+}
+@media screen and (max-width: 400px) {
+    #form_container{
+        zoom: 0.5;
+    }
+}
+@media screen and (max-width: 300px) {
+    #form_container{
+        zoom: 0.4;
+    }
+}

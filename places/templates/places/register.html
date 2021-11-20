@@ -1,0 +1,34 @@
+{% extends 'places/base.html' %}
+{% load static %}
+
+{% block register %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/register_style.css' %}">
+        <div id="bg"></div>
+            <div id="register_field">
+                    <div id="form_container">
+                        <div class="register_info">
+                            <h1>PRIVACY POLICY</h1>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, eos! Impedit at, eum rerum assumenda suscipit quis saepe fuga? Similique nesciunt ab deleniti, eveniet ut esse! Atque rem exercitationem ex.</p><br>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, eos! Impedit at, eum rerum assumenda suscipit quis saepe fuga? Similique nesciunt ab deleniti, eveniet ut esse! Atque rem exercitationem ex.</p><br>
+                            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, eos! Impedit at, eum rerum assumenda suscipit quis saepe fuga? Similique nesciunt ab deleniti, eveniet ut esse! Atque rem exercitationem ex.</p>
+                            <input type="button" value="I already have an account" class='have_account_button'>
+                        </div>
+                        <div class="register_form">
+                            <h2>REGISTER HERE</h2>
+                            <form method="POST">
+                                <center>
+                                    <input type="text" name="first_name" id="form_input" placeholder="First name"><br>
+                                    <input type="text" name="last_name" id="form_input" placeholder="Last name"><br>
+                                    <input type="email" name="email" id="form_input" placeholder="Email"><br>
+                                    <input type="password" name="password" id="form_input" placeholder="Password"><br>
+                                    <input type="password" name="re_password" id="form_input" placeholder="Confirm password"><br>
+                                </center>
+                                <label><input type="checkbox" name="register_checkbox" id="register_checkbox"> I agree to the <a href=""">Terms and Conditions </a></label><br>
+                                <input id='register_submit_button' type="submit" value="Register">
+                            </form>
+                        
+                        </div>
+                    </div>
+            </div>
+
+{% endblock register %}

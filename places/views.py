@@ -5,3 +5,6 @@ from django.shortcuts import render
 
 def homeview(request):
     return render(request, "places/home.html", {})
+
+def register(request):
+    return render(request, "places/register.html", {})
