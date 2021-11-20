@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="eng">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="google" content="notranslate" />
+        <link rel="stylesheet" type="text/css" href="{% static 'css/home_style.css' %}">
+        <title>where</title>
+        <script
+            src="https://code.jquery.com/jquery-3.6.0.js"
+            integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+            crossorigin="anonymous">
+        </script>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=Lusitana&family=Playfair+Display&display=swap"
+              rel="stylesheet">
+    </head>
+    <body>
+
+        <header onselectstart="return false">
+            <img src="{% static 'assets/user.png' %}" id="user_img" alt="">
+            <a id="where" href="">where</a>
+            <div id="btn_nav">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div> 
+        </header>
+       
+        <div id="wrap_nav" onmousedown="return false" onselectstart="return false">
+            <li><a href="#">-about-</a></li>
+            <li><a href="#">-ranking-</a></li>
+            <li><a href="#">-create-</a></li>
+            <li><a href="#">-contact-</a></li>
+        </div>
+
+
+        {% block main %}
+        {% endblock main %}
+
+        <footer onmousedown="return false" onselectstart="return false">
+            <ol id="footer_menu">
+				<a href=""><li class="footer_menu">about</li></a>
+				<a href=""><li class="footer_menu">terms & conditions</li></a>
+				<a href=""><li class="footer_menu">FAQ</li></a>
+			</ol>
+            
+
+			<ol id="footer_logo">
+				<li class="footer_logo">where</li>
+				<li class="footer_logo">&#169;2021</li>
+			</ol>
+
+            <div id="links">
+                <a href=""><img src="{% static 'assets/fb.png' %}" class="img fb"></a>
+                <a href=""><img src="{% static 'assets/ig.png' %}" class="img ig"></a>
+                <a href=""><img src="{% static 'assets/tt.png' %}" class="img tt"></a>
+                <a href=""><img src="{% static 'assets/sc.png' %}" class="img sc"></a>
+            </div>
+
+            <div class="invisible">Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+		</footer>
+        <script>
+        
+        $(function(e){
+            "use strict";
+            $('#btn_nav').click(function(e){
+                $(this).toggleClass('open');
+                $('#wrap_nav').toggleClass('open');
+            });
+        });
+        </script>
+        
+    </body>
+</html>

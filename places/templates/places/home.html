@@ -1,0 +1,138 @@
+{% extends 'places/base.html' %}
+{% load static %}
+
+{% block main %}
+    <div id="SLIDER">
+        
+        <p class="enjoy">Enjoy.</p>
+
+        <form id="searchbar">
+            
+            <input type="search" results=5 placeholder="your localisation..." name="search" class="localisation_text_field">
+            <button type="submit" class="search_btn" style="vertical-align:middle">search</button>
+
+        </form>
+
+        <p id="arrow"">&#10093;</p>
+    </div>
+
+    <div id="work_title">
+        <ol id="title">
+            <li class="title">travel</li>
+            <li class="title">and</li>
+            <li class="title">share</li>
+        </ol>
+    </div>
+
+    <div id="work_content">
+        <ol id="content">
+            <li class="content">How it works?</li>
+            <li class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nam lorem nisl, ullamcorper vel augue eget, lobortis efficitur metus. Duis laoreet est arcu, eget facilisis orci egestas vel.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nam lorem nisl, ullamcorper vel augue eget, lobortis efficitur metus. Duis laoreet est arcu, eget facilisis orci egestas vel.</li>
+        </ol>
+    </div>
+
+    <div id="ranking">
+        
+        <ol id="ranking_title" onmousedown="return false" onselectstart="return false">
+            <li class="ranking_title">TOP</li>
+            <li class="ranking_title">RANKING</li>
+        </ol>
+        
+        <select id="selectbox" data-selected="" >
+            <option value="" selected="selected" disabled="disabled">SORT BY</option>
+            <option value="1">TOP RATED</option>
+            <option value="2">NEWEST</option>
+            <option value="3">RECOMMENDED</option>
+        </select>
+
+        <img src="{% static 'assets/crown.png' %}" class="crown"></img>
+
+        <div id="trip_field"></div>
+        
+        <p class="more_button">MORE &#9660;</p>
+        
+    </div>
+
+    <div id="sharing_title">
+        <ol id="title">
+            <li class="title">create</li>
+            <li class="title">and</li>
+            <li class="title">design</li>
+        </ol>
+    </div>
+
+    <div id="sharing_content">
+        <ol class="content">
+            <li class="content">Wanna share?</li>
+            <li class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nam lorem nisl, ullamcorper vel augue eget, lobortis efficitur metus. Duis laoreet est arcu, eget facilisis orci egestas vel.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nam lorem nisl, ullamcorper vel augue eget, lobortis efficitur metus. Duis laoreet est arcu, eget facilisis orci egestas vel.</li>
+            <li>
+                <a href="">
+                    <button id="sharing_btn">start now</button>
+                </a>
+            </li>
+        </ol>
+    </div>
+    <script>
+        let trip_title_db = 'Lorem Ipsum dolor sit';
+        let img_src_db = "{% static 'assets/town.jpg' %}";
+        let trip_rate_db = '4.9';
+        let trip_txt_db = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac tincidunt nunc. Pellentesque dignissim, nulla at blandit pharetra, urna nisi suscipit libero, eget lacinia neque tellus egestas massa. Praesent purus nisl, euismod et auctor in, bibendum in massa. Nam neque enim, pharetra sit amet vestibulum a, aliquet vel neque. Vestibulum quis sem sapien. Aliquam eros tortor, accumsan sed gravida vel, maximus non odio. Pellentesque finibus dui a neque aliquam tristique. Donec in leo risus. Nulla rhoncus pellentesque felis, a gravida nulla congue a. Nullam nec ligula dignissim, efficitur dui vitae, aliquam eros. Donec ut pellentesque neque, quis vulputate ipsum.';
+        let trip_date_db = '23.12.2020';
+
+        let nr=0;
+
+        function add_4_trips(){
+            for (number = 0; number < 4; number++, nr++) {
+                $(`<div id="trip_no_${nr}" class="trip"></div>`)
+                    .append(`<div class="trip_photo" style="background-image: url('${img_src_db}')"></div>`)
+                    .append(`<p class="trip_title">${trip_title_db}</p>`)
+                    .append(`<div style="float: right;"> <img src="{% static 'assets/star.png' %}" class="rating_star"> <p class="trip_rate">${trip_rate_db}</p> </div>`)
+                    .append(`<p class="trip_txt">${trip_txt_db}</p>`)
+                    .append(`<p class="trip_date">&#9672;${trip_date_db}</p>`)
+                    .appendTo('#trip_field');
+            }
+        }
+
+        $( document ).ready( add_4_trips );
+        $( '.more_button' ).click( add_4_trips );
+
+        // 'select' position
+        function selectPosition(){        
+            let first_trip = $(".trip_photo").first();
+            let x = first_trip.position();
+
+            if (window.innerWidth > 1200) {
+                $( "select" ).css({
+                    top: x.top - 80,
+                    left: x.left
+                });
+            }
+            if (window.innerWidth > 1000){ 
+                $( ".crown" ).css({
+                    top: x.top - 50,
+                    left: x.left + 210
+                });
+            } 
+            if (window.innerWidth < 1200){
+                $( "select" ).css({
+                    top: x.top -100,
+                    left: "50%",
+                    transform: "translateX(-50%)",
+                });
+            }
+
+            if (window.innerWidth < 1000){
+                $( ".crown" ).css({
+                    top: x.top - 50,
+                    left: '50%',
+                    transform: 'translateX(-50%)'
+                });
+            }
+
+        }
+
+        $( document ).ready(setTimeout(selectPosition), 2000);
+        $( window ).on('resize', selectPosition);
+        $( window ).on('scroll', selectPosition);
+    </script>
+{% endblock main %}
