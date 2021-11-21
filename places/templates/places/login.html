@@ -1,0 +1,23 @@
+{% extends 'places/base.html' %}
+{% load static %}
+
+{% block login %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/login_style.css' %}">
+
+    <div id="bg"></div>
+            <div id="login_field">
+                <div id="login_form">
+                    <center>
+                        <h2>Sing in</h2>
+                        <form method="POST">
+                        
+                                <input type="text" name="first_name" id="form_input" placeholder="User name"><br>
+                                <input type="password" name="password" id="form_input" placeholder="Password"><br>
+                                <input id='login_button' type="submit" value="Log in">
+                        
+                        </form>
+                    </center>
+                        <p>Forgot your password?</p>    
+                </div>
+            </div>
+{% endblock login %}

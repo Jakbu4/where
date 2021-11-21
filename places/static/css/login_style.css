@@ -1,0 +1,130 @@
+:root {
+    --green: rgb(7, 139, 139);
+}
+body{
+    overflow-x: hidden;
+}
+#bg{
+    background-image: url('../assets/1.jpg');
+    position: absolute;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    filter:blur(4px);
+        -o-filter:blur(4px);
+        -ms-filter:blur(4px);
+        -moz-filter:blur(4px);
+        -webkit-filter:blur(4px);
+    transform: scale(1.03);
+}
+#login_field{
+    height: 100vh;
+    width: 100%;
+}
+#login_form{
+    width: 600px;
+    height: 600px;
+    margin: 0;
+    position: absolute;           
+    top: 50%; 
+    left: 50%;                     
+    transform: translate(-50%, -50%);
+    background-color: white;
+    
+}
+h2{
+    text-align: center;
+    font-family: 'Courier new';
+    font-size: 300%;
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+#form_input{
+    border: none;
+    border-bottom: 1px solid rgb(143, 143, 143);
+    font-size: 110%;
+    width: 60%;
+    line-height: 40px;
+    padding-left: 15px;
+    outline: none;
+    margin-bottom: 17px;
+}
+#form_input::placeholder{
+    opacity: 0.7;
+}
+#login_button{
+    background-color: var(--green); /* Green */
+    font-family: 'Lato';
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 40px;
+    cursor: pointer;
+    border: none;
+    padding: 13px 60px;
+}
+#login_button:hover{
+    padding: 10px 57px;
+    border: 3px solid var(--green);
+    color: var(--green);
+    background-color: white;
+    transition-duration: 150ms;
+}
+#login_form p{
+    font-family: 'Lato';
+    margin-left: 110px;
+    margin-top: 50px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+#login_form p:hover{
+    opacity: 1;
+    color: var(--green);
+}
+
+
+
+
+@media screen and (max-width: 1200px) {}
+@media screen and (max-width: 700px) {
+    #login_form{
+        zoom: 0.9;
+    }
+}
+@media screen and (max-width: 600px) {
+    #login_form{
+        zoom: 0.8;
+        font-size: 130%;
+    }
+    #form_input{
+        margin-bottom: 30px;
+    }
+    #login_button{
+        font-size: 130%;
+    } 
+}
+@media screen and (max-width: 500px) {
+    #login_form{
+        zoom: 0.7;
+    }
+}
+@media screen and (max-width: 500px) {
+    #login_form{
+        zoom: 0.6;
+    }
+}
+@media screen and (max-width: 400px) {
+    #login_form{
+        zoom: 0.5;
+    }
+}
+@media screen and (max-width: 300px) {
+    #login_form{
+        zoom: 0.4;
+    }
+}
