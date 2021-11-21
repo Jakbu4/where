@@ -11,3 +11,6 @@ def register(request):
 
 def login(request):
     return render(request, "places/login.html", {})
+
+def profile(request):
+    return render(request, "places/profile-page.html", {})

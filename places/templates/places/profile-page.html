@@ -1,0 +1,66 @@
+{% extends 'places/base.html' %}
+{% load static %}
+
+{% block profile %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/profile-page.css' %}">
+    <div id="profile">
+        <div id="background_img" style="background-image: url({% static 'assets/prof-bg.jpg' %});"></div>
+
+        <script>
+            let isopen = 0;
+
+                $('#background_img').click(function() {
+                    if (isopen==0){
+                        $('#background_img').css({
+                            'height': '800px',
+                            'background-position': 'bottom',
+                        });
+                        $('#user_photo').css({
+                            'top': '750px',
+                        });
+                        isopen = 1;
+                    } else {
+                        $('#background_img').css({
+                        'height': '220px',
+                        'background-position': 'top',
+                    });
+                    $('#user_photo').css({
+                        'top': '170px',
+                    });
+                    isopen = 0;
+                    }
+                });
+
+        </script>
+
+        <img id='user_photo' src="{% static 'assets/user.png' %}" alt="">
+        <div id="profile_info">
+            <center>
+                <h1 class="name">Marian Grzybczyk</h1>
+                <h2 class="local">Wadowice, PL</h2>
+                <p class="desc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis dolore expedita fuga, asperiores quis rerum deleniti voluptas totam quaerat doloremque dicta, accusantium fugit eveniet! Eveniet quia rerum eligendi laudantium non!</p>
+                <hr>
+            </center>
+            <div id="prof_opt">
+                <div id="profile_tabs">
+                    <div class="tab shared_places">
+                        <h1 class="nr">21</h1>
+                        <p class="tab_name">Shared Places</p>
+                    </div>
+                    <div class="tab nr_followers">
+                        <h1 class="nr">152</h1>
+                        <p class="tab_name">Followers</p>
+                    </div>
+                    <div class="tab nr_following">
+                        <h1 class="nr">84</h1>
+                        <p class="tab_name">Following</p>
+                    </div>
+                </div>
+                <div id="follow_btn_field">
+                    <input id='follow_button' type="button" value="Follow">
+                </div>
+            </div>
+        </div>
+        <div id="shared_places_field"></div>
+    </div>
+{% endblock profile %}
