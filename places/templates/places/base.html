@@ -21,14 +21,34 @@
     <body>
 
         <header onselectstart="return false">
-            <img src="{% static 'assets/user.png' %}" id="user_img" alt="">
-            <a id="where" href="">where</a>
+            <img src="{% static 'assets/user.png' %}" id="user_img">
+            <a id="where" href="{% url 'home' %}">where</a>
             <div id="btn_nav">
                 <span></span>
                 <span></span>
                 <span></span>
             </div> 
         </header>
+
+        <div class="login_options">
+            <div id="triangle"></div>
+            <!-- <h1>Marian Grzybczyk</h1>
+            <p>Wadowice, PL</p>
+            <ul>
+                <li class="opt_list"><a class="opt_btn" href="{% url 'profile' %}">My Profile</a></li>
+                <li class="opt_list"><a class="opt_btn" href="">Edit Profile</a></li>
+                <li class="opt_list"><a class="opt_btn" href="">Help</a></li>
+                <li class="special_list"><a class='logout_btn' href="">Logout</a></li>
+            </ul> -->
+            <a href="{% url 'login' %}"><input type="button" id='login_button_h' value="Sign in"></a>
+            <a href="{% url 'register' %}"><input type="button" id='register_button_h' value="Sign up"></a>
+        </div>
+        <script>
+            $('#user_img').click(function(e){
+                $('.login_options').toggleClass('active');
+            });
+        </script>
+
        
         <div id="wrap_nav" onmousedown="return false" onselectstart="return false">
             <li><a href="#">-about-</a></li>
@@ -37,6 +57,13 @@
             <li><a href="#">-contact-</a></li>
         </div>
 
+        
+        {% if messages %}
+            {% for message in messages %}
+                <div id="messages"><p>{{ message }}</p></div>
+            {% endfor %} 
+        {% endif %}
+            
 
         {% block main %}{% endblock main %}
         

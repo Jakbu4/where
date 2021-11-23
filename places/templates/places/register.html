@@ -11,16 +11,16 @@
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, eos! Impedit at, eum rerum assumenda suscipit quis saepe fuga? Similique nesciunt ab deleniti, eveniet ut esse! Atque rem exercitationem ex.</p><br>
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, eos! Impedit at, eum rerum assumenda suscipit quis saepe fuga? Similique nesciunt ab deleniti, eveniet ut esse! Atque rem exercitationem ex.</p><br>
                             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque, eos! Impedit at, eum rerum assumenda suscipit quis saepe fuga? Similique nesciunt ab deleniti, eveniet ut esse! Atque rem exercitationem ex.</p>
-                            <input type="button" value="I already have an account" class='have_account_button'>
+                            <a href="{% url 'login' %}"><input type="button" value="I already have an account" class='have_account_button'></a>
                         </div>
                         <div class="register_form">
                             <h2>REGISTER HERE</h2>
                             <form method="POST">
                                 <center>
-                                    <input type="text" name="user_name" id="form_input" placeholder="User name"><br>
-                                    <input type="email" name="email" id="form_input" placeholder="Email"><br>
-                                    <input type="password" name="password" id="form_input" placeholder="Password"><br>
-                                    <input type="password" name="re_password" id="form_input" placeholder="Confirm password"><br>
+                                    <input type="text" id="register_username_field" class="form_input" placeholder="Username"><br>
+                                    <input type="email" id="register_email_field" class="form_input" placeholder="Email"><br>
+                                    <input type="password" id="register_password_field" class="form_input" placeholder="Password"><br>
+                                    <input type="password" id="register_re_password_field" class="form_input" placeholder="Confirm password"><br>
                                 </center>
                                 <label><input type="checkbox" name="register_checkbox" id="register_checkbox"> I agree to the <a class='terms_link' href="">Terms and Conditions </a></label><br>
                                 <input id='register_submit_button' type="submit" value="Register">

@@ -41,7 +41,7 @@ h2{
     margin-top: 100px;
     margin-bottom: 50px;
 }
-#form_input{
+.form_input{
     border: none;
     border-bottom: 1px solid rgb(143, 143, 143);
     font-size: 110%;
@@ -51,7 +51,7 @@ h2{
     outline: none;
     margin-bottom: 17px;
 }
-#form_input::placeholder{
+.form_input::placeholder{
     opacity: 0.7;
 }
 #login_button{
@@ -101,7 +101,7 @@ h2{
         zoom: 0.8;
         font-size: 130%;
     }
-    #form_input{
+    .form_input{
         margin-bottom: 30px;
     }
     #login_button{

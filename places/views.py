@@ -9,8 +9,8 @@ def home(request):
 def register(request):
     return render(request, "places/register.html", {})
 
-def login(request):
-    return render(request, "places/login.html", {})
+# def login(request):
+#     return render(request, "places/login.html", {})
 
 def profile(request):
     return render(request, "places/profile-page.html", {})
