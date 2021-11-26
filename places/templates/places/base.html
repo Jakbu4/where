@@ -32,16 +32,20 @@
 
         <div class="login_options">
             <div id="triangle"></div>
-            <!-- <h1>Marian Grzybczyk</h1>
-            <p>Wadowice, PL</p>
-            <ul>
-                <li class="opt_list"><a class="opt_btn" href="{% url 'profile' %}">My Profile</a></li>
-                <li class="opt_list"><a class="opt_btn" href="">Edit Profile</a></li>
-                <li class="opt_list"><a class="opt_btn" href="">Help</a></li>
-                <li class="special_list"><a class='logout_btn' href="">Logout</a></li>
-            </ul> -->
-            <a href="{% url 'login' %}"><input type="button" id='login_button_h' value="Sign in"></a>
-            <a href="{% url 'register' %}"><input type="button" id='register_button_h' value="Sign up"></a>
+            
+            {% if user.is_authenticated %}
+                <h1>{{ user.username }}</h1>
+                <p>Wadowice, PL</p>
+                <ul>
+                    <a class="opt_btn" href="{% url 'profile' %}"><li class="opt_list">My Profile</li></a>
+                    <a class="opt_btn" href=""><li class="opt_list">Edit Profile</li></a>
+                    <a class="opt_btn" href=""><li class="opt_list">Help</li></a>
+                    <a class='logout_btn' href="{% url 'logout' %}"><li class="special_list">Logout</li></a>
+                </ul>
+            {% else %}
+                <a href="{% url 'login' %}"><input type="button" id='login_button_h' value="Sign in"></a>
+                <a href="{% url 'register' %}"><input type="button" id='register_button_h' value="Sign up"></a>
+            {% endif %}
         </div>
         <script>
             $('#user_img').click(function(e){
@@ -60,7 +64,14 @@
         
         {% if messages %}
             {% for message in messages %}
-                <div id="messages"><p>{{ message }}</p></div>
+                <div id="messages">
+                    <p>&#128172;&nbsp<strong>NOTICE: </strong>{{ message }}<span id='message_x'>&#10005;</span></p>
+                </div>
+                <script>
+                    $('#message_x').click(function(e){
+                        $('#messages').toggleClass('invisible');
+                    });
+                </script>
             {% endfor %} 
         {% endif %}
             

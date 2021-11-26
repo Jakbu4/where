@@ -4,6 +4,16 @@
 {% block register %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/register_style.css' %}">
         <div id="bg"></div>
+            {% if form.errors %}
+                    <div id="messages">
+                        <p>&#128172;&nbsp<strong>NOTICE: </strong>Form errror...<span id='message_x'>&#10005;</span></p>
+                    </div>
+                    <script>
+                        $('#message_x').click(function(e){
+                            $('#messages').toggleClass('invisible');
+                        });
+                    </script>
+            {% endif %}
             <div id="register_field">
                     <div id="form_container">
                         <div class="register_info">
@@ -15,15 +25,18 @@
                         </div>
                         <div class="register_form">
                             <h2>REGISTER HERE</h2>
-                            <form method="POST">
+                            <form method="POST" action="{% url 'register' %}">
+                                {% csrf_token %}
+
                                 <center>
-                                    <input type="text" id="register_username_field" class="form_input" placeholder="Username"><br>
-                                    <input type="email" id="register_email_field" class="form_input" placeholder="Email"><br>
-                                    <input type="password" id="register_password_field" class="form_input" placeholder="Password"><br>
-                                    <input type="password" id="register_re_password_field" class="form_input" placeholder="Confirm password"><br>
+                                    <p>{{ form.username }}</p>
+                                    <p>{{ form.email }}</p>
+                                    <p>{{ form.password1 }}</p>
+                                    <p>{{ form.password2 }}</p>
                                 </center>
-                                <label><input type="checkbox" name="register_checkbox" id="register_checkbox"> I agree to the <a class='terms_link' href="">Terms and Conditions </a></label><br>
-                                <input id='register_submit_button' type="submit" value="Register">
+                                <p><label>{{ form.tac }} I agree to the <a class='terms_link' href="">Terms and Conditions </a></label></p>
+                                <input id='register_submit_button' type="submit" value="Register"> 
+                           
                             </form>
                         
                         </div>

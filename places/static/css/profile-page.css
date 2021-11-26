@@ -131,3 +131,88 @@
     float: left;
 
 }
+@media screen and (max-width: 1200px) {
+    .desc{
+        max-width: 70%;
+    }
+    #profile_tabs{
+        margin-left: 0%;
+    }
+    #follow_btn_field{
+        height: 80px;
+        width: 174px;
+        position: relative;
+        float: left;
+        left: 50px;
+        margin-right: 0%;
+    }
+    #follow_button{
+        background-color: var(--green);
+        font-family: 'Lato';
+        color: white;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        border: none;
+        padding: 13px 60px;
+        transform: translate(0, 35%);
+    }
+    #follow_button:hover{
+        background-color: white;
+        color: var(--green);
+        border: 4px solid var(--green);
+        padding: 9px 56px;
+        transition-duration: 150ms;
+    }
+    #shared_places_field{
+        width: 100%;
+        position: relative;
+        float: left;
+    
+    }
+}
+@media screen and (max-width: 850px) {
+    .desc{
+        max-width: 80%;
+    }
+    #profile_tabs{
+        width: 500px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #profile_tabs{
+        width: 100%;
+    }
+    #follow_btn_field{
+        display: none;
+        visibility: hidden;
+    }
+
+}
+@media screen and (max-width: 600px) {
+ 
+}
+@media screen and (max-width: 500px) {
+
+}
+@media screen and (max-width: 500px) {
+ 
+}
+@media screen and (max-width: 400px) {
+    .nr{
+        margin-top: 25px;
+        margin-bottom: 2px;
+        font-size: 100%;
+    }
+    .tab_name{
+        font-size: 60%;
+        opacity: 0.8;
+    }
+}
+@media screen and (max-width: 300px) {
+    
+}

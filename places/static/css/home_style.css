@@ -24,25 +24,29 @@ html{
     background: var(--green);
 }
 #messages{
-    position: absolute;
-    text-align: center;
+    position: fixed;
     top: 100px;
-    color: white;
-    width: 50%;
+    width: 30%;
     left: 50%;
     transform: translateX(-50%);
     z-index: 10;
-    background-color: rgba(201, 166, 8, 0.582);
+    background-color: rgba(52, 197, 233, 0.39);
     font-family: 'Lato';
-    font-weight: bold;
-    font-size: 140%;
-    border: 3px solid rgb(201, 166, 8);
-    border-radius: 20px;
+    font-size: 100%;
+    border: 1px solid rgb(52, 197, 233);
+    border-radius: 10px;
 }
 #messages p{
-    padding: 20px;
+    padding: 10px 10px 10px 20px;
     opacity: 1;
+    width: 100%;
 }
+#message_x{
+    position: absolute;
+    cursor: pointer;
+    right: 20px;
+}
+
 header {
     position: fixed;
     left: 0;
@@ -203,14 +207,14 @@ a#where:hover, a#where:active {
 .login_options ul .special_list:hover{
     background-color: rgba(255, 0, 0, 0.4);    
 }
-.login_options ul .opt_list:hover .opt_btn{
+.login_options ul .opt_btn:hover{
     color: white;
 }
 .login_options ul .special_list:hover .logout_btn{
     color: white;
 }
 
-.login_options ul .opt_list .opt_btn{
+.login_options ul .opt_btn{
     text-decoration: none;
     color: black;
 }
@@ -676,6 +680,10 @@ footer li.footer_logo:nth-child(2){
     #user_img{
         right: calc(80vw);
     }
+    #messages{
+        width: 80%;
+
+    }
     .login_options{
         right: calc(80vw - 8.45em);
     }
@@ -788,7 +796,9 @@ footer li.footer_logo:nth-child(2){
         .more_button{
             margin: 0.5em 0 1em 0;
         }
-
+        #messages{
+            font-size: 80%;
+        }
 } 
 
 
@@ -799,6 +809,7 @@ footer li.footer_logo:nth-child(2){
         .trip:hover > .trip_photo{
             height:60%;
         }
+        
 }
 @media screen and (max-width: 350px) {
         .trip_photo{
@@ -806,5 +817,8 @@ footer li.footer_logo:nth-child(2){
         }
         .trip:hover > .trip_photo{
             height:55%;
+        }
+        #messages{
+            font-size: 70%;
         }
 }

@@ -6,11 +6,8 @@ from django.shortcuts import render
 def home(request):
     return render(request, "places/home.html", {})
 
-def register(request):
-    return render(request, "places/register.html", {})
-
-# def login(request):
-#     return render(request, "places/login.html", {})
+# def register(request):
+#     return render(request, "places/register.html", {})
 
 def profile(request):
     return render(request, "places/profile-page.html", {})

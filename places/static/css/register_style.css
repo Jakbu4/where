@@ -104,7 +104,7 @@ body{
 .form_input::placeholder{
     opacity: 0.7;
 }
-#register_checkbox{
+.register_checkbox{
     margin-top: 20px;
     margin-left: 110px;
 }
@@ -122,7 +122,7 @@ body{
     border: 3px solid var(--green);
     color: var(--green);
     background-color: white;
-    transition-duration: 150ms;
+
 }
 
 
@@ -153,7 +153,7 @@ body{
     .form_input{
         margin-bottom: 25px;
     }
-    #register_checkbox{
+    .register_checkbox{
         width: 20px;
         height: 20px;
         margin-bottom: 25px;
