@@ -1,13 +1,20 @@
 from django.shortcuts import render
-
+from .models import Place
 # Create your views here.
 
 
 def home(request):
-    return render(request, "places/home.html", {})
+    places = Place.objects.all()
+    return render(request, "places/home.html", {'places': places})
 
-# def register(request):
-#     return render(request, "places/register.html", {})
 
 def profile(request):
     return render(request, "places/profile-page.html", {})
+
+
+def edit_profile(request):
+    return render(request, "places/edit-profile.html", {})
+
+
+def create_place(request):
+    return render(request, "places/create-place.html", {})

@@ -1,7 +1,7 @@
 {% extends 'places/base.html' %}
 {% load static %}
 
-{% block register %}
+{% block content %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/register_style.css' %}">
         <div id="bg"></div>
             {% if form.errors %}
@@ -43,4 +43,4 @@
                     </div>
             </div>
 
-{% endblock register %}
+{% endblock content %}

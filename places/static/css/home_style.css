@@ -322,7 +322,6 @@ a#where:hover, a#where:active {
     border: none;
     border-left: none;
     cursor: pointer;
-    transition: all 300ms ;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .search_btn:hover{
@@ -422,7 +421,7 @@ a#where:hover, a#where:active {
     text-align: center;
     vertical-align: top; 
 }
-select {
+#selectbox {
     position: absolute;
     z-index: 98;
     padding: 0.3em 6em 0.3em 0.5em;
@@ -434,7 +433,7 @@ select {
     border-radius: 0; 
     background: #e5e5e5;;
 }
-select:focus{
+#selectbox:focus{
     outline: none !important;
 }
 #ranking_title{
@@ -504,12 +503,20 @@ li.ranking_title:nth-child(2){
 .trip_title{
     position: relative;
     float: left;
+    width: 70%;
+    word-wrap: break-word;
+    text-align: left;
     font-family: 'Playfair Display', serif;
     font-weight: 550;
     font-size: 1.65em;
     letter-spacing: 0.04em;
     margin-top: 0.5em;
     margin-left: 1em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1; /* number of lines to show */
+    -webkit-box-orient: vertical;
 }
 .rating_star{
     height: 1.6em;
@@ -527,6 +534,7 @@ li.ranking_title:nth-child(2){
 .trip_txt{
     position: relative;
     float: left;
+    width: 70%;
     text-align: left;
     font-family: 'Playfair Display', serif;
     font-weight: lighter;
@@ -574,7 +582,6 @@ li.ranking_title:nth-child(2){
 #sharing_btn:hover{
     background: var(--green);
     color: white;
-    transition: all 150ms ;
 }
 footer {
     background-color: #292929;

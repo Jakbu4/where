@@ -38,7 +38,7 @@
                 <p>Wadowice, PL</p>
                 <ul>
                     <a class="opt_btn" href="{% url 'profile' %}"><li class="opt_list">My Profile</li></a>
-                    <a class="opt_btn" href=""><li class="opt_list">Edit Profile</li></a>
+                    <a class="opt_btn" href="{% url 'edit_profile' %}"><li class="opt_list">Edit Profile</li></a>
                     <a class="opt_btn" href=""><li class="opt_list">Help</li></a>
                     <a class='logout_btn' href="{% url 'logout' %}"><li class="special_list">Logout</li></a>
                 </ul>
@@ -76,13 +76,8 @@
         {% endif %}
             
 
-        {% block main %}{% endblock main %}
-        
-        {% block register %}{% endblock register %}
+        {% block content %}{% endblock content %}
 
-        {% block login %}{% endblock login %}
-
-        {% block profile %}{% endblock profile %}
 
         <footer onmousedown="return false" onselectstart="return false">
             <ol id="footer_menu">

@@ -1,7 +1,7 @@
 {% extends 'places/base.html' %}
 {% load static %}
 
-{% block main %}
+{% block content %}
     <div id="SLIDER">
         
         <p class="enjoy">Enjoy.</p>
@@ -13,7 +13,7 @@
 
         </form>
 
-        <p id="arrow"">&#10093;</p>
+        <p id="arrow">&#10093;</p>
     </div>
 
     <div id="work_title">
@@ -47,7 +47,23 @@
 
         <img src="{% static 'assets/crown.png' %}" class="crown"></img>
 
-        <div id="trip_field"></div>
+        <div id="trip_field">
+
+            
+            {% for place in places %}
+                   
+                <div id="trip" class="trip">
+                    <div class="trip_photo" style="background-image: url( {% static 'assets/town.jpg' %} )"></div>
+                    <p class="trip_title">{{ place.title }}</p>
+                    <div style="float: right;"> <img src="{% static 'assets/star.png' %}" class="rating_star"> <p class="trip_rate">{{ place.rate }}</p> </div>
+                    <p class="trip_txt">{{ place.description }}</p>
+                    <p class="trip_date">&#9672;{{place.city}}, {{ place.add_date }}</p>
+                </div>
+
+            {% endfor %}
+
+            {{book.siema}}
+        </div>
         
         <p class="more_button">MORE &#9660;</p>
         
@@ -66,37 +82,21 @@
             <li class="content">Wanna share?</li>
             <li class="content">Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nam lorem nisl, ullamcorper vel augue eget, lobortis efficitur metus. Duis laoreet est arcu, eget facilisis orci egestas vel.Lorem ipsum dolor sit amet, consectetur adipiscing elit.Nam lorem nisl, ullamcorper vel augue eget, lobortis efficitur metus. Duis laoreet est arcu, eget facilisis orci egestas vel.</li>
             <li>
-                <a href="">
-                    <button id="sharing_btn">start now</button>
-                </a>
+                {% if user.is_authenticated %}
+                    <a href="{% url 'create_place' %}">
+                        <button id="sharing_btn">start now</button>
+                    </a>
+                {% else %}
+                    <a href="{% url 'login' %}">
+                        <button id="sharing_btn">start now</button>
+                    </a>
+                {% endif %}
+                    
+                
             </li>
         </ol>
     </div>
     <script>
-        let trip_title_db = 'Lorem Ipsum dolor sit';
-        let img_src_db = "{% static 'assets/town.jpg' %}";
-        let trip_rate_db = '4.9';
-        let trip_txt_db = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ac tincidunt nunc. Pellentesque dignissim, nulla at blandit pharetra, urna nisi suscipit libero, eget lacinia neque tellus egestas massa. Praesent purus nisl, euismod et auctor in, bibendum in massa. Nam neque enim, pharetra sit amet vestibulum a, aliquet vel neque. Vestibulum quis sem sapien. Aliquam eros tortor, accumsan sed gravida vel, maximus non odio. Pellentesque finibus dui a neque aliquam tristique. Donec in leo risus. Nulla rhoncus pellentesque felis, a gravida nulla congue a. Nullam nec ligula dignissim, efficitur dui vitae, aliquam eros. Donec ut pellentesque neque, quis vulputate ipsum.';
-        let trip_date_db = 'Wadowice 23.12.2020';
-
-        let nr=0;
-
-        function add_4_trips(){
-            for (number = 0; number < 4; number++, nr++) {
-                $(`<div id="trip_no_${nr}" class="trip"></div>`)
-                    .append(`<div class="trip_photo" style="background-image: url('${img_src_db}')"></div>`)
-                    .append(`<p class="trip_title">${trip_title_db}</p>`)
-                    .append(`<div style="float: right;"> <img src="{% static 'assets/star.png' %}" class="rating_star"> <p class="trip_rate">${trip_rate_db}</p> </div>`)
-                    .append(`<p class="trip_txt">${trip_txt_db}</p>`)
-                    .append(`<p class="trip_date">&#9672;${trip_date_db}</p>`)
-                    .appendTo('#trip_field');
-            }
-        }
-
-        $( document ).ready( add_4_trips );
-        $( '.more_button' ).click( add_4_trips );
-
-        // 'select' position
         function selectPosition(){        
             let first_trip = $(".trip_photo").first();
             let x = first_trip.position();
@@ -135,4 +135,4 @@
         $( window ).on('resize', selectPosition);
         $( window ).on('scroll', selectPosition);
     </script>
-{% endblock main %}
+{% endblock content %}
