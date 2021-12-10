@@ -81,6 +81,7 @@
     margin: 0;
     text-align: center;
     vertical-align: middle;
+    cursor: pointer;
 }
 .tab:hover{
     color: var(--green);
@@ -129,7 +130,9 @@
     width: 100%;
     position: relative;
     float: left;
-
+    background-color: #e5e5e5;
+    text-align: center;
+    
 }
 @media screen and (max-width: 1200px) {
     .desc{

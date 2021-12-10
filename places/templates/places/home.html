@@ -31,6 +31,8 @@
         </ol>
     </div>
 
+    <div id="uchwyt"></div>
+    
     <div id="ranking">
         
         <ol id="ranking_title" onmousedown="return false" onselectstart="return false">
@@ -38,31 +40,135 @@
             <li class="ranking_title">RANKING</li>
         </ol>
         
-        <select id="selectbox" data-selected="" >
-            <option value="" selected="selected" disabled="disabled">SORT BY</option>
-            <option value="1">TOP RATED</option>
-            <option value="2">NEWEST</option>
-            <option value="3">RECOMMENDED</option>
-        </select>
+        <form method="POST">
+            {% csrf_token %}
+            <select name="user_select" id="selectbox" onchange="this.form.submit()">
+                <option value="" selected="selected" disabled="disabled">ORDER BY</option>
+                <option value="rate">TOP RATED</option>
+                <option value="add_date">NEWEST</option>
+                <option>RECOMMENDED</option>
+            </select>
+            <img src="{% static 'assets/filter.png' %}" class="user_filter">
+        </form>
+        
+        <div id="filter_field">
+            <form method="POST">
+                {% csrf_token %}
+                <ul>
+                    <li><label><input type="checkbox" name="filter_event" class="filter_checkbox"> EVENT</label></li>
+                    <li><label><input type="checkbox" name="filter_sightseing" class="filter_checkbox"> SIGHTSEING</label></li>
+                    <li><label><input type="checkbox" name="filter_leisure" class="filter_checkbox"> LEISURE</label></li>
+                </ul>
+                <input type="submit" value="filter">
+            </form>
+        </div>
+
+        
 
         <img src="{% static 'assets/crown.png' %}" class="crown"></img>
 
         <div id="trip_field">
-
-            
             {% for place in places %}
                    
-                <div id="trip" class="trip">
-                    <div class="trip_photo" style="background-image: url( {% static 'assets/town.jpg' %} )"></div>
+                <div id="trip" class="trip {{ place.id }}">
+                    <div class="trip_photo" style="background-image: url( 'media/{{ place.image }}' )"></div>
                     <p class="trip_title">{{ place.title }}</p>
                     <div style="float: right;"> <img src="{% static 'assets/star.png' %}" class="rating_star"> <p class="trip_rate">{{ place.rate }}</p> </div>
-                    <p class="trip_txt">{{ place.description }}</p>
-                    <p class="trip_date">&#9672;{{place.city}}, {{ place.add_date }}</p>
+                    <p class="trip_txt">{{ place.description|safe }}</p>
+                    <p class="trip_date">&#9672; {{place.city}}, {{ place.add_date }}</p>
                 </div>
 
+                <script>
+                    $('.{{ place.id }}').click(function(e){
+                        
+                        document.getElementById("uchwyt").innerHTML = `
+                            <div id="clicked_trip_field">
+                                <span class='clicked_trip_x'>&#10005;</span>
+                                <div class="clicked_trip_photo" style="background-image: url( media/{{ place.image }} )"></div>
+                                <p class="clicked_trip_title">{{ place.title }}</p>
+
+                                <div class="clicked_trip_rating">
+                                    <img src="{% static 'assets/star.png' %}" class="clicked_rating_star">
+                                    <span class="clicked_trip_rate">{{ place.rate }}</span>
+                                </div>
+
+                                <p class="clicked_trip_txt">{{ place.description|safe }}</p>
+                                <p class="clicked_trip_date">&#9672; {{place.city}}, {{ place.add_date }}</p>
+                                <p class="clicked_trip_author">Author: {{ place.author }}</p>
+
+                                {% if user.is_authenticated and user.pk == place.author.pk %}
+                                    <button class="edit buttons">Edit</button>
+                                    <a href="{% url 'delete_place' place.pk %}"><button class="delete buttons">Delete</button></a>
+                                {% endif %}
+                                
+                            </div>`;
+                            
+                        $('.clicked_trip_x').click(function(e){
+                            $('#clicked_trip_field').toggleClass('invisible');
+                        });
+
+                        $('.clicked_trip_photo').click(function(){
+                            $('.clicked_trip_photo').toggleClass('resize');
+                        })
+
+                        $('.clicked_trip_rating').hover(function(){
+                            $('span').remove('.clicked_trip_rate');
+                            $('img').remove('.clicked_rating_star');
+                            $('.clicked_trip_rating').append(`<div class='user_vote'>
+                                <img src="{% static 'assets/star.png' %}" class="vote_rating_star star_1">
+                                <img src="{% static 'assets/star.png' %}" class="vote_rating_star star_2">
+                                <img src="{% static 'assets/star.png' %}" class="vote_rating_star star_3">
+                                <img src="{% static 'assets/star.png' %}" class="vote_rating_star star_4">
+                                <img src="{% static 'assets/star.png' %}" class="vote_rating_star star_5">
+                                </div>`);  
+
+
+                            $('.star_1').hover(function(){
+                                $('.star_1').addClass('opacited');
+                            }, function(){
+                                $('.star_1').removeClass('opacited');
+                            });
+
+                            $('.star_2').hover(function(){
+                                $('.star_1, .star_2').addClass('opacited');
+                            }, function(){
+                                $('.star_1, .star_2').removeClass('opacited');
+                            });
+
+                            $('.star_3').hover(function(){
+                                $('.star_1, .star_2, .star_3').addClass('opacited');
+                            }, function(){
+                                $('.star_1, .star_2, .star_3').removeClass('opacited');
+                            });
+
+                            $('.star_4').hover(function(){
+                                $('.star_1, .star_2, .star_3, .star_4').addClass('opacited');
+                            }, function(){
+                                $('.star_1, .star_2, .star_3, .star_4').removeClass('opacited');
+                            });
+
+                            $('.star_5').hover(function(){
+                                $('.star_1, .star_2, .star_3, .star_4, .star_5').addClass('opacited');
+                            }, function(){
+                                $('.star_1, .star_2, .star_3, .star_4, .star_5').removeClass('opacited');
+                            });
+                            
+
+                        },  function(){
+                            $('div').remove('.user_vote');  
+                            $('.clicked_trip_rating').append(`
+                                <img src="{% static 'assets/star.png' %}" class="clicked_rating_star">
+                                <span class="clicked_trip_rate">{{ place.rate }}</span>
+                            `);
+
+                            });
+                        });
+                </script>
+                
             {% endfor %}
 
-            {{book.siema}}
+            
+
         </div>
         
         <p class="more_button">MORE &#9660;</p>
@@ -96,31 +202,18 @@
             </li>
         </ol>
     </div>
+
+
     <script>
         function selectPosition(){        
             let first_trip = $(".trip_photo").first();
             let x = first_trip.position();
-
-            if (window.innerWidth > 1200) {
-                $( "select" ).css({
-                    top: x.top - 80,
-                    left: x.left
-                });
-            }
             if (window.innerWidth > 1000){ 
                 $( ".crown" ).css({
                     top: x.top - 50,
                     left: x.left + 210
                 });
             } 
-            if (window.innerWidth < 1200){
-                $( "select" ).css({
-                    top: x.top -100,
-                    left: "50%",
-                    transform: "translateX(-50%)",
-                });
-            }
-
             if (window.innerWidth < 1000){
                 $( ".crown" ).css({
                     top: x.top - 50,

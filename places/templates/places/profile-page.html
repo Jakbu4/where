@@ -44,15 +44,15 @@
             <div id="prof_opt">
                 <div id="profile_tabs">
                     <div class="tab shared_places">
-                        <h1 class="nr">21</h1>
+                        <h1 class="nr">{{ places|length }}</h1>
                         <p class="tab_name">Shared Places</p>
                     </div>
                     <div class="tab nr_followers">
-                        <h1 class="nr">152</h1>
+                        <h1 class="nr">0</h1>
                         <p class="tab_name">Followers</p>
                     </div>
                     <div class="tab nr_following">
-                        <h1 class="nr">84</h1>
+                        <h1 class="nr">0</h1>
                         <p class="tab_name">Following</p>
                     </div>
                 </div>
@@ -61,6 +61,55 @@
                 </div>
             </div>
         </div>
-        <div id="shared_places_field"></div>
+
+        <div id="uchwyt"></div>
+
+        <div id="shared_places_field">
+            {% for place in places %}
+                <div id="trip" class="trip {{ place.id }}">
+                    <div class="trip_photo" style="background-image: url( '../media/{{ place.image }}' )"></div>
+                    <p class="trip_title">{{ place.title }}</p>
+                    <div style="float: right;"> <img src="{% static 'assets/star.png' %}" class="rating_star"> <p class="trip_rate">{{ place.rate }}</p> </div>
+                    <p class="trip_txt">{{ place.description|safe }}</p>
+                    <p class="trip_date">&#9672; {{place.city}}, {{ place.add_date }}</p>
+                </div>
+
+                <script>
+                    $('.{{ place.id }}').click(function(e){
+                        
+                        document.getElementById("uchwyt").innerHTML = 
+                        `<div id="clicked_trip_field">
+                                <span class='clicked_trip_x'>&#10005;</span>
+                                <div class="clicked_trip_photo" style="background-image: url( ../media/{{ place.image }} )"></div>
+                                <p class="clicked_trip_title">{{ place.title }}</p>
+
+                                <div class="clicked_trip_rating">
+                                    <img src="{% static 'assets/star.png' %}" class="clicked_rating_star">
+                                    <span class="clicked_trip_rate">{{ place.rate }}</span>
+                                </div>
+
+                                <p class="clicked_trip_txt">{{ place.description|safe }}</p>
+                                <p class="clicked_trip_date">&#9672; {{place.city}}, {{ place.add_date }}</p>
+                                <p class="clicked_trip_author">Author: {{ place.author }}</p>
+
+                                {% if user.is_authenticated and user.pk == place.author.pk %}
+                                    <button class="edit buttons">Edit</button>
+                                    <a href="{% url 'delete_place' place.pk %}"><button class="delete buttons">Delete</button></a>
+                                {% endif %}
+                                
+                            </div>`;
+                            
+                        $('.clicked_trip_x').click(function(e){
+                            $('#clicked_trip_field').toggleClass('invisible');
+                        });
+
+                        $('.clicked_trip_photo').click(function(){
+                            $('.clicked_trip_photo').toggleClass('resize');
+                        });
+                    });
+                </script>
+        
+            {% endfor %}
+        </div>
     </div>
 {% endblock content %}

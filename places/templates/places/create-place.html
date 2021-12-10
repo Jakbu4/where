@@ -9,11 +9,11 @@
 
             <div id="create_place_form">
                 <h2>Share with us!</h2>
-                <form method="post">
+                <form method="post" enctype="multipart/form-data" action="{% url 'add_place' %}">
                     {% csrf_token %}
                     <input type="text" name="place_name" class="text_input" placeholder="title" required>
                     <select name="place_type" class="place_type_input" required>
-                        <option value="" selected="selected" disabled="disabled">select type</option>
+                        <option value="" selected="selected" disabled="disabled">select category</option>
                         <option value="opt1">event</option>
                         <option value="opt1">sightseeing</option>
                         <option value="opt1">leisure</option>
