@@ -50,20 +50,21 @@
             </select>
             <img src="{% static 'assets/filter.png' %}" class="user_filter">
         </form>
+        <script>
+            $('.user_filter').click(function(){
+                $('#filter_field').toggleClass('invisible');
+            });
+        </script>
         
-        <div id="filter_field">
+        <div id="filter_field" class="invisible">
             <form method="POST">
                 {% csrf_token %}
-                <ul>
-                    <li><label><input type="checkbox" name="filter_event" class="filter_checkbox"> EVENT</label></li>
-                    <li><label><input type="checkbox" name="filter_sightseing" class="filter_checkbox"> SIGHTSEING</label></li>
-                    <li><label><input type="checkbox" name="filter_leisure" class="filter_checkbox"> LEISURE</label></li>
-                </ul>
-                <input type="submit" value="filter">
+                <label><input type="checkbox" name="filter_event" class="filter_checkbox"> EVENT</label><br>
+                <label><input type="checkbox" name="filter_sightseing" class="filter_checkbox"> SIGHTSEING</label><br>
+                <label><input type="checkbox" name="filter_leisure" class="filter_checkbox"> LEISURE</label><br></br>
+                <input type="submit" value="FILTER" class="filter_submit_button">
             </form>
         </div>
-
-        
 
         <img src="{% static 'assets/crown.png' %}" class="crown"></img>
 

@@ -10,10 +10,9 @@ class Place(models.Model):
     address = models.CharField(max_length=200, null=True)
     description = models.CharField(max_length=2000, default='', null=True)
     image = models.ImageField(null=True, blank=True, upload_to="images/")
-    rate = models.FloatField(default=0.0)
+    rate = models.FloatField(default=0.0, null=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, default='')
     add_date = models.DateTimeField(default=datetime.now(), blank=True)
 
     def __str__(self):
         return self.title
-    

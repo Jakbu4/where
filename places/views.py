@@ -8,6 +8,7 @@ from .models import Place
 
 def home(request):
     user_selection = request.POST.get('user_select')
+
     if user_selection is not None:
         places = Place.objects.all().order_by('-'+user_selection)
     else:
