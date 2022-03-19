@@ -68,6 +68,7 @@
                     <p>&#128172;&nbsp<strong>NOTICE: </strong>{{ message }}<span id='message_x'>&#10005;</span></p>
                 </div>
                 <script>
+                    setTimeout(() => { $('#messages').toggleClass('invisible'); }, 3000);
                     $('#message_x').click(function(e){
                         $('#messages').toggleClass('invisible');
                     });
