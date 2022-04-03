@@ -5,14 +5,25 @@ from users.views import user_login
 from .models import Place
 # Create your views here.
 
+limit = 4
+def more_button(request):
+    global limit
+    limit += 2
+    return redirect('home')
 
 def home(request):
     user_selection = request.POST.get('user_select')
-
-    if user_selection is not None:
-        places = Place.objects.all().order_by('-'+user_selection)
+    user_localisation = request.POST.get('localisation_text_field')
+    if user_localisation is not None:
+        if user_selection is not None:
+            places = Place.objects.all().filter(city=user_localisation).order_by('-'+user_selection)[:limit]
+        else:
+            places = Place.objects.all().filter(city=user_localisation)[:limit]
     else:
-        places = Place.objects.all()
+        if user_selection is not None:
+            places = Place.objects.all().order_by('-'+user_selection)[:limit]
+        else:
+            places = Place.objects.all()[:limit]
     return render(request, "places/home.html", {'places': places})
 
 

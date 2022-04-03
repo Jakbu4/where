@@ -132,7 +132,17 @@
     float: left;
     background-color: #e5e5e5;
     text-align: center;
-    
+}
+.add_more_trips_profile_button{
+    box-shadow: none;
+    background-color: rgba(0, 0, 0, 0);
+    background-image: url(../assets/plus.png);
+    background-position: center;
+    background-size: 30%;
+    background-repeat: no-repeat;
+}
+.add_more_trips_profile_button:hover{
+    background-color: rgba(0, 0, 0, 0.08);
 }
 @media screen and (max-width: 1200px) {
     .desc{

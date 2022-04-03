@@ -312,14 +312,13 @@ a#where:hover, a#where:active {
     float: left;
     width: 80%;
     background: #fff;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    box-shadow: 4px 4px 8px 4px rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .localisation_text_field:focus {
     outline: none;
 }
 .search_btn{
     float: left;
-    /* border-radius: 0px 15px 15px 0px; */
     width: 20%;
     padding: 0.85em;
     background: var(--green);
@@ -329,7 +328,6 @@ a#where:hover, a#where:active {
     border: none;
     border-left: none;
     cursor: pointer;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .search_btn:hover{
     background-color: #fff;
@@ -338,6 +336,35 @@ a#where:hover, a#where:active {
 }
 ::-webkit-search-cancel-button {
     -webkit-appearance: none;
+}
+.autofill_bg{
+    font-family: 'Lusitana', serif;
+    color:rgba(0, 0, 0, 0.8);
+    position: relative;
+    float: left;
+    width: 80%;
+    background-color: white;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+}
+.autofill_bg.active{
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+}
+.autofii_ul{
+    margin: 0;
+    padding: 0;
+}
+.autofill_li{
+    padding: 0.7em 0 0.7em 1.4em;
+    font-size: 1.3em;
+    list-style-type: none;
+}
+.autofill_li:hover{
+    background-color:rgba(7, 139, 139, 0.4);
+    color:rgba(255, 255, 255, 1);
 }
 #arrow{
 	font-size: 4em;
@@ -374,6 +401,10 @@ a#where:hover, a#where:active {
     overflow: hidden;
     display: flex;
     align-items: center;
+}
+.link_eff, .link_eff:visited{
+    text-decoration: none;
+    color: black;
 }
 #work_title li.title,  #sharing_title li.title{
     float: left;
@@ -940,6 +971,9 @@ footer li.footer_logo:nth-child(2){
         width: 2.5em;
         margin: 0.5em 1em 2em 1em;
     }
+    #clicked_trip_field{
+        width: 75%;
+    }
     
 }
 @media screen and (max-width: 500px) {
@@ -987,6 +1021,9 @@ footer li.footer_logo:nth-child(2){
         #messages{
             font-size: 80%;
         }
+        #clicked_trip_field{
+            width: 85%;
+        }
 } 
 
 
@@ -996,6 +1033,9 @@ footer li.footer_logo:nth-child(2){
         }
         .trip:hover > .trip_photo{
             height:60%;
+        }
+        #clicked_trip_field{
+            width: 90%;
         }
         
 }
@@ -1008,5 +1048,8 @@ footer li.footer_logo:nth-child(2){
         }
         #messages{
             font-size: 70%;
+        }
+        #clicked_trip_field{
+            width: 90%;
         }
 }

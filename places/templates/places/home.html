@@ -6,11 +6,13 @@
         
         <p class="enjoy">Enjoy.</p>
 
-        <form id="searchbar">
-            
-            <input type="search" results=5 placeholder="your localisation..." name="search" class="localisation_text_field">
+        <form id="searchbar" method="POST">
+            {%csrf_token%}
+            <input type="search" results=5 name="localisation_text_field" placeholder="your localisation..." class="localisation_text_field">
             <button type="submit" class="search_btn" style="vertical-align:middle">search</button>
-
+            <div class="autofill_bg">
+                <ul class="autofii_ul"></ul>
+            </div>
         </form>
 
         <p id="arrow">&#10093;</p>
@@ -46,7 +48,7 @@
                 <option value="" selected="selected" disabled="disabled">ORDER BY</option>
                 <option value="rate">TOP RATED</option>
                 <option value="add_date">NEWEST</option>
-                <option>RECOMMENDED</option>
+                <option value="id">RECOMMENDED</option>
             </select>
             <img src="{% static 'assets/filter.png' %}" class="user_filter">
         </form>
@@ -168,11 +170,9 @@
                 
             {% endfor %}
 
-            
-
         </div>
         
-        <p class="more_button">MORE &#9660;</p>
+        <p class="more_button"><a class="link_eff" href="{% url 'more_button' %}">MORE &#9660;</a></p>
         
     </div>
 
@@ -228,5 +228,9 @@
         $( document ).ready(setTimeout(selectPosition), 2000);
         $( window ).on('resize', selectPosition);
         $( window ).on('scroll', selectPosition);
+
+
     </script>
+    <script src="{% static 'scripts/suggestions.js' %}"></script>
+    <script src="{% static 'scripts/autofilling_searchbar.js' %}"></script>
 {% endblock content %}
